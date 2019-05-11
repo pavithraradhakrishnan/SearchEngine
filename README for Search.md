@@ -114,9 +114,9 @@ I have designed by web page in django and I have integrated my python script for
     
 
     
-![](search.png)
+![](images/search.png)
 
-![](search-result.png)
+![](imagessearch-result.png)
 
 
 
