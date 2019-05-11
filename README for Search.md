@@ -188,10 +188,12 @@ STEP 1: We first need to calculate the prior probability for all classes(genres)
 STEP 2:Probability of each word per class
 For calculating our probability, we will find the average of each word for a given class.
 For class j and word i, the average is given by:
+![](images/bayes1.png)
+
 
 
 However, since some words will have 0 counts, we will perform a Laplace Smoothing with low ɑ:
-
+![](images/bayes2.png)
 
 where V is an array of all the words in the vocabulary
 
@@ -247,5 +249,6 @@ https://github.com/mayank408/TFIDF
 https://www.kaggle.com/guilherme93/nlp-movie-genre-prediction-from-plot/notebook
 https://www.kaggle.com/ibtesama/getting-started-with-a-movie-recommendation-system/data#Content-Based-Filtering
 https://github.com/Heetmadhu/Movie-Recommendation
+https://towardsdatascience.com/multinomial-naive-bayes-classifier-for-text-analysis-python-8dd6825ece67
 
 
