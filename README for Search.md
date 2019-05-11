@@ -188,11 +188,14 @@ STEP 1: We first need to calculate the prior probability for all classes(genres)
 STEP 2:Probability of each word per class
 For calculating our probability, we will find the average of each word for a given class.
 For class j and word i, the average is given by:
+
+
 ![](images/bayes1.png)
 
 
 
 However, since some words will have 0 counts, we will perform a Laplace Smoothing with low ɑ:
+
 ![](images/bayes2.png)
 
 where V is an array of all the words in the vocabulary
