@@ -5,21 +5,56 @@ This **search engine** is a part of  movie recommendation system.
 TF-IDF stands for “Term Frequency — Inverse Data Frequency”. 
 ### Term Frequency (tf):
    TF gives us the frequency of the word in each document in the corpus. It is the ratio of number of times the word appears in a document compared to the total number of words in that document. It increases as the number of occurrences of that word within the document increases. Each document has its own tf.
+   def computeTF(wordDict, bow):
+    tfDict = {}
+    bowCount = len(bow)
+    for word, count in wordDict.items():
+        tfDict[word] = count/float(bowCount)
+    return tfDict
 
 ![](/images/tf.png)
 
 
 ### Inverse Data Frequency (idf):
 IDF used to calculate the weight of rare words across all documents in the corpus. The words that occur rarely in the corpus have a high IDF score. It is given by the equation below.
+   
+    def computeIDF(docList):
+    import math
+    idfDict = {}
+    N = len(docList)
+    
+    idfDict = dict.fromkeys(docList[0].keys(), 0)
+    for doc in docList:
+        for word, val in doc.items():
+            if val > 0:
+                idfDict[word] += 1
+
+    for word, val in idfDict.items():
+        idfDict[word] = math.log10(N / float(val))
+
+    return idfDict
 
 
 ![](/images/idf.png)
 
-IF_IDF:
+TF_IDF:
 Combining these two we come up with the TF-IDF score (w) for a word in a document in the corpus. It is the product of tf and idf:
+    
+    def computeTFIDF(tfBow, idfs):
+    tfidf = {}
+    for word, val in tfBow.items():
+        tfidf[word] = val*idfs[word]
+    return tfidf
+   
+
+
 
 
 ![](/images/tfidf.png)
+
+###Cosine Similarity
+
+
 
 
 ### Walkthrough the code
@@ -40,7 +75,12 @@ Stemming usually refers to a crude heuristic process that chops off the ends of 
     analyzer = CountVectorizer().build_analyzer()
     return (english_stemmer.stem(w) for w in analyzer(text))
     
-Now that we have done with preprocessing of the data. Now we need to form the tf-idf matrix for the train data and test data.   And then we compute the cosine similarity. We output the top three results which aremost similar to the query string.
+
+We calculate the TF-IDF matrix for the train data and test data. And then we compute the cosine similarity between them. We output the top 3 most similar items that matches the query in descending orders
+
+
+
+We output the top three results which aremost similar to the query string.
      def movie_search(query):
 
     df = pandas.read_csv("movies_data1.csv")
@@ -58,6 +98,11 @@ Now that we have done with preprocessing of the data. Now we need to form the tf
     df1 = df.iloc[result[0][-3:]]
     return df1.original_title.tolist(),df1.overview.tolist(),result[0][-3:]
 
+### SCREEN SHOTS.
+I have designed by web page in django and I have integrated my python script for the search implementation.
+    
+    
+
     
 ![](classify2.png)
 
@@ -67,3 +112,7 @@ Now that we have done with preprocessing of the data. Now we need to form the tf
 REFERENCE:
 https://medium.freecodecamp.org/how-to-process-textual-data-using-tf-idf-in-python-cd2bbc0a94a3
 https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html
+https://github.com/mayank408/TFIDF
+https://www.kaggle.com/guilherme93/nlp-movie-genre-prediction-from-plot/notebook
+https://www.kaggle.com/ibtesama/getting-started-with-a-movie-recommendation-system/data#Content-Based-Filtering
+
