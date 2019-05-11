@@ -116,7 +116,8 @@ I have designed by web page in django and I have integrated my python script for
     
 ![](images/search.png)
 
-![](imagessearch-result.png)
+As you can see the most similar result is the thrid one, which is most similar to the query
+![](images/search-result.png)
 
 
 
