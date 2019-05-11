@@ -206,16 +206,16 @@ For class j, word i at a word frequency of f:
 ![](images/bayes3.png)
 
 In order to avoid underflow, we will use the sum of logs:
-![](images/bayes4.png)
-![](images/bayes5.png)
+![](images/bayes4.gif)
+![](images/bayes5.gif)
 
 One issue is that, if a word appears again, the probability of it appearing again goes up. In order to smooth this, we take the log of the frequency:
-![](images/bayes6.png)
+![](images/bayes6.gif)
 
 Also, in order to take stop words into account, we will add a Inverse Document Frequency (IDF)weight on each word:
 
-![](images/bayes7.png)
-![](images/bayes8.png)
+![](images/bayes7.gif)
+![](images/bayes8.gif)
 
 
 
