@@ -252,6 +252,9 @@ As its name suggests, SMOTE is an oversampling method. It works by creating synt
  Oversampling basically means that we'll generate more data for the least common category using the SMOTE algorithm.  
 
 ## RESULT: After all the effort. Oversampling+ tifidf +  multinomial bayes gave a more accurate prediction.
+![](images/classify.png)
+![](images/classify-result.png)
+
 
 ## EVALUATION RESULTS:
 
@@ -261,6 +264,11 @@ KFOLD provides train/test indices to split data in train/test sets. Split datase
 
 Each fold is then used once as a validation while the k - 1 remaining folds form the training set.
 
+![](images/classify-report-1.png)
+![](images/classify-report2.png)
+![](images/classify-report3.png)
+![](images/classify-report-4.png)
+![](images/classify-report-5.png)
 
 
 
