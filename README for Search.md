@@ -44,7 +44,7 @@ IDF used to calculate the weight of rare words across all documents in the corpu
 
 ![](/images/idf.png)
 
-TF_IDF:
+### TF_IDF:
 Combining these two we come up with the TF-IDF score (w) for a word in a document in the corpus. It is the product of tf and idf:
     
     def computeTFIDF(tfBow, idfs):
@@ -130,7 +130,7 @@ DATA SET:
 
  I have used Genre and  If you notice there are three genres for each movies. I have taken the first genre for our classification and ignored all other genres. As the first genre best describes our data set.
 
-DATA CLEANING:
+### DATA CLEANING:
 
 I have removed all stop words from the overview. Also I have applied lemmatization  as it remove inflectional endings only and to return the base or dictionary form of a word .
 
@@ -183,6 +183,17 @@ As you can see some of the genres have insufficient data points and this would r
 I implemented several different classifier before finalizing one.  I implemented  SVM, Multinomial Bayes, Random forest and logistic regression. Out of all these multinomial bayesian classifier gave me the maximum accuracy.Also Bayesian classifier works better with text data.
 
 ## MULTINOMIAL NAVIE BAYES:
+HOW DOES A MULTINOMIAL NAIVE BAYES CLASSIFIER WORKS
+STEP 1: We first need to calculate the prior probability for all classes(genres). It's nothing but the fraction of document in each class.
+STEP 2:Probability of each word per class
+For calculating our probability, we will find the average of each word for a given class.
+For class j and word i, the average is given by:
+
+
+However, since some words will have 0 counts, we will perform a Laplace Smoothing with low ɑ:
+
+
+where V is an array of all the words in the vocabulary
 
 ## IMPLEMENTATION:
 
@@ -190,7 +201,7 @@ I implemented several different classifier before finalizing one.  I implemented
 
 This is due to the low precision numbers.
 
-## SOME IMPORTANT TERMS TO KNOW:
+### SOME IMPORTANT TERMS TO KNOW:
 
  Confusion Matrix: A breakdown of predictions into a table showing correct predictions (the diagonal) and the types of incorrect predictions made (what classes incorrect predictions were assigned)
 
@@ -200,13 +211,11 @@ Recall: A measure of a classifiers completeness
 
 F1 Score (or F-score): A weighted average of precision and recall. 
 
-SOLUTION:
+### SOLUTION:
 
  The misclassification is due to the imbalance in the data points. Hence we used Over sampling to solve this problem.
 
-## SMOTE ALGORITHM:
-
- 
+### SMOTE ALGORITHM: 
 
 A simple way to generate synthetic samples is to randomly sample the attributes from instances in the minority class.
 
