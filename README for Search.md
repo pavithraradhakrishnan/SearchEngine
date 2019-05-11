@@ -1,4 +1,4 @@
-# SearchEngine
+# PART I - SearchEngine
 This **search engine** is a part of  movie recommendation system. 
 ## How it works ??
 In the search bar of my web page I key in any query/phrase , the 3 most similar "movie overview" which is similar to query is retrieved.
@@ -118,6 +118,115 @@ I have designed by web page in django and I have integrated my python script for
 
 As you can see the most similar result is the thrid one, which is most similar to the query
 ![](images/search-result.png)
+
+
+# PART 2  MOVIE GENRE CLASSIFICATION BASED ON PLOT
+INTRODUCTION: 
+
+I have implemented a NLP classifier that predicts the genres according to the plot summaries.
+
+
+DATA SET:
+
+ I have used Genre and  If you notice there are three genres for each movies. I have taken the first genre for our classification and ignored all other genres. As the first genre best describes our data set.
+
+DATA CLEANING:
+
+I have removed all stop words from the overview. Also I have applied lemmatization  as it remove inflectional endings only and to return the base or dictionary form of a word .
+
+I have also taken the count of each genres in the data set. And I observed that there is an imbalance in the data set. Here is the count of data points in each genres.
+
+ 'Drama'             2360
+
+ 'Comedy'            1945
+
+ 'Action'            1057
+
+ 'Horror'            463
+
+ 'Adventure'         411
+
+ 'Crime'             359
+
+ 'Documentary'       225
+
+ 'Thriller'          210
+
+ 'Fantasy'           185
+
+ 'Romance'           182
+
+ 'Animation'         102
+
+ 'Science Fiction'   101
+
+ 'Mystery'           94
+
+ 'Music'             79
+
+ 'Western'           71
+
+ 'War'               62
+
+ 'Family'            54
+
+ 'History'           31
+
+ 'TV Movie'          5
+
+ 'Foreign'           4
+
+As you can see some of the genres have insufficient data points and this would result in inaccurate classification. Hence I have extracted the data points containing the top 9 genres.
+
+## CHALLENGES - CHOOSING THE CLASSIFIER:
+
+I implemented several different classifier before finalizing one.  I implemented  SVM, Multinomial Bayes, Random forest and logistic regression. Out of all these multinomial bayesian classifier gave me the maximum accuracy.Also Bayesian classifier works better with text data.
+
+## MULTINOMIAL NAVIE BAYES:
+
+## IMPLEMENTATION:
+
+  I have used TF_IDF vectorizer.  I also implemented the multinomial Bayesian classifier. The classifier gave 90% accuracy. However I observed that  the classifier was mis classifying the movies.
+
+This is due to the low precision numbers.
+
+## SOME IMPORTANT TERMS TO KNOW:
+
+ Confusion Matrix: A breakdown of predictions into a table showing correct predictions (the diagonal) and the types of incorrect predictions made (what classes incorrect predictions were assigned)
+
+Precision: A measure of a classifiers exactness
+
+Recall: A measure of a classifiers completeness
+
+F1 Score (or F-score): A weighted average of precision and recall. 
+
+SOLUTION:
+
+ The misclassification is due to the imbalance in the data points. Hence we used Over sampling to solve this problem.
+
+## SMOTE ALGORITHM:
+
+ 
+
+A simple way to generate synthetic samples is to randomly sample the attributes from instances in the minority class.
+
+You could sample them empirically within your data set or you could use a method like Naive Bayes that can sample each attribute independently when run in reverse. You will have more and different data, but the non-linear relationships between the attributes may not be preserved.
+
+There are systematic algorithms that you can use to generate synthetic samples. The most popular of such algorithms is called SMOTE or the Synthetic Minority Over-sampling Technique.
+
+As its name suggests, SMOTE is an oversampling method. It works by creating synthetic samples from the minor class instead of creating copies. The algorithm selects two or more similar instances (using a distance measure) and perturbing an instance one attribute at a time by a random amount within the difference to the neighboring instances.
+
+ Oversampling basically means that we'll generate more data for the least common category using the SMOTE algorithm.  
+
+## RESULT: After all the effort. Oversampling+ tifidf +  multinomial bayes gave a more accurate prediction.
+
+## EVALUATION RESULTS:
+
+I have used the KFOLD approach for training the model.  
+
+KFOLD provides train/test indices to split data in train/test sets. Split dataset into k consecutive folds.
+
+Each fold is then used once as a validation while the k - 1 remaining folds form the training set.
 
 
 
