@@ -62,10 +62,8 @@ Combining these two we come up with the TF-IDF score (w) for a word in a documen
 ### Cosine Similarity
 Compute cosine similarity between the test_tfidf andthe train_tfidf
 The cosine similarity between two vectors (or two documents on the Vector Space) is a measure that calculates the cosine of the angle between them. This metric is a measurement of orientation and not magnitude, it can be seen as a comparison between documents on a normalized space because we’re not taking into the consideration only the magnitude of each word count (tf-idf) of each document, but the angle between the documents. 
-And that is it, this is the cosine similarity formula
-What we have to do to build the cosine similarity equation is to solve the equation of the dot product for the \cos{\theta}:
+And that is it, this is the cosine similarity formula. After computing the cosine similarity the top three 3 results are retrieved and displayed in descending order
 
-  \displaystyle  \vec{a} \cdot \vec{b} = \|\vec{a}\|\|\vec{b}\|\cos{\theta} \\ \\  \cos{\theta} = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\|\|\vec{b}\|}  .
 
 
 
@@ -116,7 +114,9 @@ I have designed by web page in django and I have integrated my python script for
     
 
     
-![](classify2.png)
+![](search.png)
+
+![](search-result.png)
 
 
 
