@@ -2,8 +2,9 @@
 This **search engine** is a part of  movie recommendation system. 
 ## How it works ??
 In the search bar of my web page I key in any query/phrase , the 3 most similar "movie overview" which is similar to query is retrieved.
+## Dataset used
+## ALGORITHM  USED AND IMPLEMENTATION DETAILS
 
-##ALGORITHM  USED AND IMPLEMENTATION DETAILS
 ## Introduction to TF-IDF
 TF-IDF stands for “Term Frequency — Inverse Data Frequency”. 
 ### Term Frequency (tf):
