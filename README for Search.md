@@ -182,8 +182,8 @@ As you can see some of the genres have insufficient data points and this would r
 
 I implemented several different classifier before finalizing one.  I implemented  SVM, Multinomial Bayes, Random forest and logistic regression. Out of all these multinomial bayesian classifier gave me the maximum accuracy.Also Bayesian classifier works better with text data.
 
-## MULTINOMIAL NAVIE BAYES:
-HOW DOES A MULTINOMIAL NAIVE BAYES CLASSIFIER WORKS
+## UNDERSTANDING MULTINOMIAL NAVIE BAYES:
+
 STEP 1: We first need to calculate the prior probability for all classes(genres). It's nothing but the fraction of document in each class.
 STEP 2:Probability of each word per class
 For calculating our probability, we will find the average of each word for a given class.
@@ -199,6 +199,25 @@ However, since some words will have 0 counts, we will perform a Laplace Smoothin
 ![](images/bayes2.png)
 
 where V is an array of all the words in the vocabulary
+STEP3:
+Combining probability distribution of P with fraction of documents belonging to each class.
+
+For class j, word i at a word frequency of f:
+![](images/bayes3.png)
+
+In order to avoid underflow, we will use the sum of logs:
+![](images/bayes4.png)
+![](images/bayes5.png)
+
+One issue is that, if a word appears again, the probability of it appearing again goes up. In order to smooth this, we take the log of the frequency:
+![](images/bayes6.png)
+
+Also, in order to take stop words into account, we will add a Inverse Document Frequency (IDF)weight on each word:
+
+![](images/bayes7.png)
+![](images/bayes8.png)
+
+
 
 ## IMPLEMENTATION:
 
